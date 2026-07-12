@@ -27,6 +27,21 @@
       "matchManagers": ["pre-commit"],
       "matchUpdateTypes": ["major"],
       "automerge": false
+    },
+    {
+      "description": "Automerge npm devDependency minor and patch updates",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Manual review for npm devDependency major updates",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false
     }
   ],
   "platformAutomerge": true
