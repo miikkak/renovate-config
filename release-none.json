@@ -1,0 +1,11 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "description": "npm devDependencies are release tooling only — label PRs to skip deployment",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"],
+      "addLabels": ["release:none"]
+    }
+  ]
+}
