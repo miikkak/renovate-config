@@ -42,6 +42,19 @@
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["major"],
       "automerge": false
+    },
+    {
+      "description": "Automerge pip requirements minor and patch updates",
+      "matchManagers": ["pip_requirements"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Manual review for pip requirements major updates",
+      "matchManagers": ["pip_requirements"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false
     }
   ],
   "platformAutomerge": true

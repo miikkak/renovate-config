@@ -11,6 +11,7 @@ Extend with `"github>miikkak/renovate-config"`. Provides:
 - Automerge for GitHub Actions minor/patch updates (major stays manual)
 - Automerge for pre-commit hook minor/patch updates (major stays manual)
 - Automerge for npm devDependency minor/patch updates (major stays manual)
+- Automerge for pip requirements minor/patch updates (major stays manual)
 - `platformAutomerge` enabled
 
 ### `release-none.json`
