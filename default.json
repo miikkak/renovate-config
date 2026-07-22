@@ -57,34 +57,24 @@
       "automerge": false
     },
     {
-      "description": "Automerge regex/custom-regex tracked pypi and docker deps minor and patch updates (e.g. anthropic/PyYAML pinned via ANTHROPIC_VERSION-style vars, Dockerfile ARG version pins)",
+      "description": "Automerge regex/custom-regex tracked deps patch updates (e.g. anthropic/PyYAML pinned via *_VERSION-style vars, Dockerfile ARG version pins, own-repo github-releases) and label them release:patch so the Release Label Check required by container repos passes without manual intervention",
       "matchManagers": ["regex", "custom.regex"],
-      "matchDatasources": ["pypi", "docker"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchUpdateTypes": ["patch"],
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "pr",
+      "addLabels": ["release:patch"]
     },
     {
-      "description": "Manual review for regex/custom-regex tracked pypi and docker deps major updates",
+      "description": "Automerge regex/custom-regex tracked deps minor updates, labeled release:minor for the same reason as the patch rule above",
       "matchManagers": ["regex", "custom.regex"],
-      "matchDatasources": ["pypi", "docker"],
-      "matchUpdateTypes": ["major"],
-      "automerge": false
-    },
-    {
-      "description": "Automerge regex/custom-regex tracked releases of our own repos minor and patch updates (e.g. rcon-cli, mc-healthcheck Dockerfile ARGs)",
-      "matchManagers": ["regex", "custom.regex"],
-      "matchDatasources": ["github-releases"],
-      "matchPackageNames": ["miikkak/**"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchUpdateTypes": ["minor"],
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "pr",
+      "addLabels": ["release:minor"]
     },
     {
-      "description": "Manual review for our own repos' major releases",
+      "description": "Manual review for regex/custom-regex tracked deps major updates - left unlabeled so a human picks the release type",
       "matchManagers": ["regex", "custom.regex"],
-      "matchDatasources": ["github-releases"],
-      "matchPackageNames": ["miikkak/**"],
       "matchUpdateTypes": ["major"],
       "automerge": false
     }
