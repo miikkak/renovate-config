@@ -55,6 +55,38 @@
       "matchManagers": ["pip_requirements"],
       "matchUpdateTypes": ["major"],
       "automerge": false
+    },
+    {
+      "description": "Automerge regex/custom-regex tracked pypi and docker deps minor and patch updates (e.g. anthropic/PyYAML pinned via ANTHROPIC_VERSION-style vars, Dockerfile ARG version pins)",
+      "matchManagers": ["regex", "custom.regex"],
+      "matchDatasources": ["pypi", "docker"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Manual review for regex/custom-regex tracked pypi and docker deps major updates",
+      "matchManagers": ["regex", "custom.regex"],
+      "matchDatasources": ["pypi", "docker"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    {
+      "description": "Automerge regex/custom-regex tracked releases of our own repos minor and patch updates (e.g. rcon-cli, mc-healthcheck Dockerfile ARGs)",
+      "matchManagers": ["regex", "custom.regex"],
+      "matchDatasources": ["github-releases"],
+      "matchPackageNames": ["miikkak/**"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Manual review for our own repos' major releases",
+      "matchManagers": ["regex", "custom.regex"],
+      "matchDatasources": ["github-releases"],
+      "matchPackageNames": ["miikkak/**"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false
     }
   ],
   "platformAutomerge": true
