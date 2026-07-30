@@ -3,9 +3,9 @@
   "extends": ["config:recommended", "helpers:pinGitHubActionDigests"],
   "packageRules": [
     {
-      "description": "Automerge GitHub Actions minor and patch updates",
+      "description": "Automerge GitHub Actions minor, patch, and digest updates",
       "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchUpdateTypes": ["minor", "patch", "digest"],
       "automerge": true,
       "automergeType": "pr"
     },
