@@ -57,25 +57,19 @@
       "automerge": false
     },
     {
-      "description": "Automerge Gradle wrapper minor and patch updates, labeled release:patch/release:minor so the Release Label Check passes without manual intervention",
+      "description": "Automerge Gradle wrapper minor and patch updates - it's build tooling, not a runtime dependency, so it never changes the compiled jar and doesn't warrant a release",
       "matchManagers": ["gradle-wrapper"],
-      "matchUpdateTypes": ["patch"],
+      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:patch"]
+      "addLabels": ["release:none"]
     },
     {
-      "matchManagers": ["gradle-wrapper"],
-      "matchUpdateTypes": ["minor"],
-      "automerge": true,
-      "automergeType": "pr",
-      "addLabels": ["release:minor"]
-    },
-    {
-      "description": "Manual review for Gradle wrapper major updates - left unlabeled so a human picks the release type",
+      "description": "Manual review for Gradle wrapper major updates (build compatibility risk), still release:none for the same reason as above",
       "matchManagers": ["gradle-wrapper"],
       "matchUpdateTypes": ["major"],
-      "automerge": false
+      "automerge": false,
+      "addLabels": ["release:none"]
     },
     {
       "description": "Automerge regex/custom-regex tracked deps patch updates (e.g. anthropic/PyYAML pinned via *_VERSION-style vars, Dockerfile ARG version pins, own-repo github-releases) and label them release:patch so the Release Label Check required by container repos passes without manual intervention",
