@@ -94,6 +94,14 @@
       "automerge": false
     },
     {
+      "description": "Test-only frameworks (JUnit, Mockito) are always testImplementation/testRuntimeOnly scoped - never bundled into the compiled jar - so label them release:none instead of the release:patch/minor the general Gradle/Maven rule above would apply. Renovate's gradle manager can't expose depType for matchDepTypes here (issue renovatebot/renovate#27777), so this is scoped by package name to well-known test-only groupIds rather than by dep type. Overrides the general rule for all update types, including major, since a JUnit/Mockito major bump still never touches the shipped artifact.",
+      "matchManagers": ["gradle", "maven"],
+      "matchPackageNames": ["/^org\\.junit(\\.|:)/", "/^org\\.mockito(\\.|:)/"],
+      "automerge": true,
+      "automergeType": "pr",
+      "addLabels": ["release:none"]
+    },
+    {
       "description": "Automerge Go module patch updates and label them release:patch so the Release Label Check passes without manual intervention",
       "matchManagers": ["gomod"],
       "matchUpdateTypes": ["patch"],
@@ -158,6 +166,14 @@
       "matchManagers": ["pep621"],
       "matchUpdateTypes": ["major"],
       "automerge": false
+    },
+    {
+      "description": "PEP 735 dependency-groups (e.g. dependency-groups.dev - pytest, ruff, etc.) are dev/test tooling never shipped in the built artifact, so label them release:none instead of the release:patch/minor the general PEP 621 rule above would apply. Overrides the general rule for all update types, including major, since CI (the test suite) is what actually needs to pass here, not a release.",
+      "matchManagers": ["pep621"],
+      "matchDepTypes": ["dependency-groups.dev"],
+      "automerge": true,
+      "automergeType": "pr",
+      "addLabels": ["release:none"]
     },
     {
       "description": "Automerge regex/custom-regex tracked deps patch updates (e.g. anthropic/PyYAML pinned via *_VERSION-style vars, Dockerfile ARG version pins, own-repo github-releases) and label them release:patch so the Release Label Check required by container repos passes without manual intervention",
