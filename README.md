@@ -19,6 +19,12 @@ Extend with `"github>miikkak/renovate-config"`. Provides:
   `release:minor`/`release:patch` (major stays manual, unlabeled)
 - Automerge for Go module minor/patch updates, labeled
   `release:minor`/`release:patch` (major stays manual, unlabeled)
+- Automerge for Dockerfile/Containerfile base image digest/patch/minor
+  updates (native `dockerfile` manager, i.e. `FROM` lines not tracked by a
+  custom regex ARG manager), labeled `release:patch`/`release:minor` (major
+  stays manual, unlabeled)
+- Automerge for PEP 621 (`pyproject.toml`) dependency minor/patch updates,
+  labeled `release:minor`/`release:patch` (major stays manual, unlabeled)
 - `platformAutomerge` enabled
 
 ### `release-none.json`
