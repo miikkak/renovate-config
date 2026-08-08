@@ -116,6 +116,50 @@
       "automerge": false
     },
     {
+      "description": "Automerge Dockerfile/Containerfile base image digest and patch updates (native docker manager - FROM lines not covered by a custom regex ARG manager) and label them release:patch, since a new base image is a real deploy-affecting change",
+      "matchManagers": ["dockerfile"],
+      "matchUpdateTypes": ["digest", "patch"],
+      "automerge": true,
+      "automergeType": "pr",
+      "addLabels": ["release:patch"]
+    },
+    {
+      "description": "Automerge Dockerfile/Containerfile base image minor updates, labeled release:minor for the same reason as the patch/digest rule above",
+      "matchManagers": ["dockerfile"],
+      "matchUpdateTypes": ["minor"],
+      "automerge": true,
+      "automergeType": "pr",
+      "addLabels": ["release:minor"]
+    },
+    {
+      "description": "Manual review for Dockerfile/Containerfile base image major updates - left unlabeled so a human picks the release type",
+      "matchManagers": ["dockerfile"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    {
+      "description": "Automerge PEP 621 (pyproject.toml) dependency patch updates and label them release:patch so the Release Label Check passes without manual intervention",
+      "matchManagers": ["pep621"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "automergeType": "pr",
+      "addLabels": ["release:patch"]
+    },
+    {
+      "description": "Automerge PEP 621 (pyproject.toml) dependency minor updates, labeled release:minor for the same reason as the patch rule above",
+      "matchManagers": ["pep621"],
+      "matchUpdateTypes": ["minor"],
+      "automerge": true,
+      "automergeType": "pr",
+      "addLabels": ["release:minor"]
+    },
+    {
+      "description": "Manual review for PEP 621 (pyproject.toml) dependency major updates - left unlabeled so a human picks the release type",
+      "matchManagers": ["pep621"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    {
       "description": "Automerge regex/custom-regex tracked deps patch updates (e.g. anthropic/PyYAML pinned via *_VERSION-style vars, Dockerfile ARG version pins, own-repo github-releases) and label them release:patch so the Release Label Check required by container repos passes without manual intervention",
       "matchManagers": ["regex", "custom.regex"],
       "matchUpdateTypes": ["patch"],
