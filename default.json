@@ -72,6 +72,50 @@
       "addLabels": ["release:none"]
     },
     {
+      "description": "Automerge Gradle/Maven dependency patch updates (e.g. junit-bom) and label them release:patch so the Release Label Check passes without manual intervention",
+      "matchManagers": ["gradle", "maven"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "automergeType": "pr",
+      "addLabels": ["release:patch"]
+    },
+    {
+      "description": "Automerge Gradle/Maven dependency minor updates, labeled release:minor for the same reason as the patch rule above",
+      "matchManagers": ["gradle", "maven"],
+      "matchUpdateTypes": ["minor"],
+      "automerge": true,
+      "automergeType": "pr",
+      "addLabels": ["release:minor"]
+    },
+    {
+      "description": "Manual review for Gradle/Maven dependency major updates - left unlabeled so a human picks the release type",
+      "matchManagers": ["gradle", "maven"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    {
+      "description": "Automerge Go module patch updates and label them release:patch so the Release Label Check passes without manual intervention",
+      "matchManagers": ["gomod"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "automergeType": "pr",
+      "addLabels": ["release:patch"]
+    },
+    {
+      "description": "Automerge Go module minor updates, labeled release:minor for the same reason as the patch rule above",
+      "matchManagers": ["gomod"],
+      "matchUpdateTypes": ["minor"],
+      "automerge": true,
+      "automergeType": "pr",
+      "addLabels": ["release:minor"]
+    },
+    {
+      "description": "Manual review for Go module major updates - left unlabeled so a human picks the release type",
+      "matchManagers": ["gomod"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    {
       "description": "Automerge regex/custom-regex tracked deps patch updates (e.g. anthropic/PyYAML pinned via *_VERSION-style vars, Dockerfile ARG version pins, own-repo github-releases) and label them release:patch so the Release Label Check required by container repos passes without manual intervention",
       "matchManagers": ["regex", "custom.regex"],
       "matchUpdateTypes": ["patch"],

@@ -15,6 +15,10 @@ Extend with `"github>miikkak/renovate-config"`. Provides:
 - Automerge for Gradle wrapper minor/patch updates, labeled `release:none`
   (it's build tooling, not a runtime dependency, so it never changes the
   compiled jar); major stays manual but is still labeled `release:none`
+- Automerge for Gradle/Maven dependency minor/patch updates, labeled
+  `release:minor`/`release:patch` (major stays manual, unlabeled)
+- Automerge for Go module minor/patch updates, labeled
+  `release:minor`/`release:patch` (major stays manual, unlabeled)
 - `platformAutomerge` enabled
 
 ### `release-none.json`
