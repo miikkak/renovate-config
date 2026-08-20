@@ -29,19 +29,21 @@
       "automerge": false
     },
     {
-      "description": "Automerge npm devDependency minor and patch updates",
+      "description": "Automerge npm devDependency minor and patch updates, labeled release:none since these repos' package.json devDependencies are always semantic-release tooling, never a shipped runtime artifact",
       "matchManagers": ["npm"],
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "pr",
+      "addLabels": ["release:none"]
     },
     {
-      "description": "Manual review for npm devDependency major updates",
+      "description": "Manual review for npm devDependency major updates - still release:none for the same reason as the minor/patch rule above; unlabeled would otherwise force a manual label just to unblock Release Label Check on a PR that's correctly held for real reasons (e.g. a toolchain incompatibility caught by verify-release-notes)",
       "matchManagers": ["npm"],
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["major"],
-      "automerge": false
+      "automerge": false,
+      "addLabels": ["release:none"]
     },
     {
       "description": "Automerge pip requirements minor and patch updates",
