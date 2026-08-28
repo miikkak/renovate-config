@@ -6,6 +6,7 @@
       "description": "Automerge GitHub Actions patch and digest updates, labeled release:patch so the Release Label Check passes without manual intervention",
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["patch", "digest"],
+      "matchPackageNames": ["!miikkak/workflows"],
       "automerge": true,
       "automergeType": "pr",
       "addLabels": ["release:patch"]
@@ -14,9 +15,18 @@
       "description": "Automerge GitHub Actions minor updates, labeled release:minor for the same reason as the patch/digest rule above",
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["minor"],
+      "matchPackageNames": ["!miikkak/workflows"],
       "automerge": true,
       "automergeType": "pr",
       "addLabels": ["release:minor"]
+    },
+    {
+      "description": "Automerge miikkak/workflows digest/version bumps, labeled release:none - these only repin the internal reusable-workflow caller and never touch the shipped artifact",
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["miikkak/workflows"],
+      "automerge": true,
+      "automergeType": "pr",
+      "addLabels": ["release:none"]
     },
     {
       "description": "Manual review for GitHub Actions major updates - left unlabeled so a human picks the release type",
