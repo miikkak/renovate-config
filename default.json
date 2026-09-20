@@ -9,7 +9,7 @@
       "matchPackageNames": ["!miikkak/workflows"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:patch"]
+      "labels": ["release:patch"]
     },
     {
       "description": "Automerge GitHub Actions minor updates, labeled release:minor for the same reason as the patch/digest rule above",
@@ -18,7 +18,7 @@
       "matchPackageNames": ["!miikkak/workflows"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:minor"]
+      "labels": ["release:minor"]
     },
     {
       "description": "Automerge miikkak/workflows digest/version bumps, labeled release:none - these only repin the internal reusable-workflow caller and never touch the shipped artifact",
@@ -26,7 +26,7 @@
       "matchPackageNames": ["miikkak/workflows"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:none"]
+      "labels": ["release:none"]
     },
     {
       "description": "Manual review for GitHub Actions major updates - left unlabeled so a human picks the release type",
@@ -40,14 +40,14 @@
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:none"]
+      "labels": ["release:none"]
     },
     {
       "description": "Manual review for pre-commit hooks major updates - still release:none for the same reason as the minor/patch rule above; unlabeled would otherwise force a manual label just to unblock Release Label Check",
       "matchManagers": ["pre-commit"],
       "matchUpdateTypes": ["major"],
       "automerge": false,
-      "addLabels": ["release:none"]
+      "labels": ["release:none"]
     },
     {
       "description": "Automerge npm devDependency minor and patch updates, labeled release:none since these repos' package.json devDependencies are always semantic-release tooling, never a shipped runtime artifact",
@@ -56,7 +56,7 @@
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:none"]
+      "labels": ["release:none"]
     },
     {
       "description": "Manual review for npm devDependency major updates - still release:none for the same reason as the minor/patch rule above; unlabeled would otherwise force a manual label just to unblock Release Label Check on a PR that's correctly held for real reasons (e.g. a toolchain incompatibility caught by verify-release-notes)",
@@ -64,7 +64,7 @@
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["major"],
       "automerge": false,
-      "addLabels": ["release:none"]
+      "labels": ["release:none"]
     },
     {
       "description": "Automerge pip requirements patch updates and label them release:patch so the Release Label Check passes without manual intervention",
@@ -72,7 +72,7 @@
       "matchUpdateTypes": ["patch"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:patch"]
+      "labels": ["release:patch"]
     },
     {
       "description": "Automerge pip requirements minor updates, labeled release:minor for the same reason as the patch rule above",
@@ -80,7 +80,7 @@
       "matchUpdateTypes": ["minor"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:minor"]
+      "labels": ["release:minor"]
     },
     {
       "description": "Manual review for pip requirements major updates - left unlabeled so a human picks the release type",
@@ -94,14 +94,14 @@
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:none"]
+      "labels": ["release:none"]
     },
     {
       "description": "Manual review for Gradle wrapper major updates (build compatibility risk), still release:none for the same reason as above",
       "matchManagers": ["gradle-wrapper"],
       "matchUpdateTypes": ["major"],
       "automerge": false,
-      "addLabels": ["release:none"]
+      "labels": ["release:none"]
     },
     {
       "description": "Automerge Gradle/Maven dependency patch updates (e.g. junit-bom) and label them release:patch so the Release Label Check passes without manual intervention",
@@ -109,7 +109,7 @@
       "matchUpdateTypes": ["patch"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:patch"]
+      "labels": ["release:patch"]
     },
     {
       "description": "Automerge Gradle/Maven dependency minor updates, labeled release:minor for the same reason as the patch rule above",
@@ -117,7 +117,7 @@
       "matchUpdateTypes": ["minor"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:minor"]
+      "labels": ["release:minor"]
     },
     {
       "description": "Manual review for Gradle/Maven dependency major updates - left unlabeled so a human picks the release type",
@@ -131,7 +131,7 @@
       "matchPackageNames": ["/^org\\.junit(\\.|:)/", "/^org\\.mockito(\\.|:)/"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:none"]
+      "labels": ["release:none"]
     },
     {
       "description": "Automerge Go module patch updates and label them release:patch so the Release Label Check passes without manual intervention",
@@ -139,7 +139,7 @@
       "matchUpdateTypes": ["patch"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:patch"]
+      "labels": ["release:patch"]
     },
     {
       "description": "Automerge Go module minor updates, labeled release:minor for the same reason as the patch rule above",
@@ -147,7 +147,7 @@
       "matchUpdateTypes": ["minor"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:minor"]
+      "labels": ["release:minor"]
     },
     {
       "description": "Manual review for Go module major updates - left unlabeled so a human picks the release type",
@@ -161,7 +161,7 @@
       "matchUpdateTypes": ["digest", "patch"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:patch"]
+      "labels": ["release:patch"]
     },
     {
       "description": "Automerge Dockerfile/Containerfile base image minor updates, labeled release:minor for the same reason as the patch/digest rule above",
@@ -169,7 +169,7 @@
       "matchUpdateTypes": ["minor"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:minor"]
+      "labels": ["release:minor"]
     },
     {
       "description": "Manual review for Dockerfile/Containerfile base image major updates - left unlabeled so a human picks the release type",
@@ -183,7 +183,7 @@
       "matchUpdateTypes": ["patch"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:patch"]
+      "labels": ["release:patch"]
     },
     {
       "description": "Automerge PEP 621 (pyproject.toml) dependency minor updates, labeled release:minor for the same reason as the patch rule above",
@@ -191,7 +191,7 @@
       "matchUpdateTypes": ["minor"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:minor"]
+      "labels": ["release:minor"]
     },
     {
       "description": "Manual review for PEP 621 (pyproject.toml) dependency major updates - left unlabeled so a human picks the release type",
@@ -205,7 +205,7 @@
       "matchDepTypes": ["dependency-groups.dev"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:none"]
+      "labels": ["release:none"]
     },
     {
       "description": "Automerge regex/custom-regex tracked deps patch updates (e.g. anthropic/PyYAML pinned via *_VERSION-style vars, Dockerfile ARG version pins, own-repo github-releases) and label them release:patch so the Release Label Check required by container repos passes without manual intervention",
@@ -213,7 +213,7 @@
       "matchUpdateTypes": ["patch"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:patch"]
+      "labels": ["release:patch"]
     },
     {
       "description": "Automerge regex/custom-regex tracked deps minor updates, labeled release:minor for the same reason as the patch rule above",
@@ -221,7 +221,7 @@
       "matchUpdateTypes": ["minor"],
       "automerge": true,
       "automergeType": "pr",
-      "addLabels": ["release:minor"]
+      "labels": ["release:minor"]
     },
     {
       "description": "Manual review for regex/custom-regex tracked deps major updates - left unlabeled so a human picks the release type",
