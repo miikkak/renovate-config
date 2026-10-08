@@ -48,6 +48,8 @@ not a change here.
 Extend with `"github>miikkak/renovate-config:release-none"` in repos that
 enforce a mandatory `release:` label (`.github/label-check.yml` with
 `required: true`). Adds the `release:none` label to npm devDependency update
-PRs, since those only touch release tooling (semantic-release toolchain) and
-must not trigger a deployment. This lets the release-label check pass so
+PRs, since those only touch release tooling (semantic-release toolchain), and
+to GitHub Actions update PRs (overriding the `release:patch`/`release:minor`
+labels from `default.json`), since those only touch workflow files. Neither
+may trigger a deployment. This lets the release-label check pass so
 automerge can proceed.
