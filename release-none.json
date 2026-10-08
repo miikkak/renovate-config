@@ -6,6 +6,11 @@
       "matchManagers": ["npm"],
       "matchDepTypes": ["devDependencies"],
       "labels": ["release:none"]
+    },
+    {
+      "description": "GitHub Actions updates only touch workflow files, never the shipped artifact — override the release:patch/minor labels from default.json",
+      "matchManagers": ["github-actions"],
+      "labels": ["release:none"]
     }
   ]
 }
