@@ -35,11 +35,10 @@
       "automerge": false
     },
     {
-      "description": "Node.js version pins in actions/setup-node (node-version) run semantic-release tooling in CI, never a shipped runtime artifact - label release:none so Release Label Check passes. Manual review for majors is kept (automerge false), only the label is added; overrides the unlabeled GitHub Actions major rule above.",
+      "description": "Node.js version pins in actions/setup-node (node-version input) run semantic-release tooling in CI, never a shipped runtime artifact - label release:none so Release Label Check passes. Renovate extracts these as depName node from github-releases (packageName actions/node-versions). Only adds the label; majors stay manual via the GitHub Actions major rule above.",
       "matchManagers": ["github-actions"],
-      "matchDatasources": ["node-version"],
-      "matchDepNames": ["node"],
-      "automerge": false,
+      "matchDatasources": ["github-releases"],
+      "matchPackageNames": ["actions/node-versions"],
       "labels": ["release:none"]
     },
     {
