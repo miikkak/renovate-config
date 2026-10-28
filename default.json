@@ -35,6 +35,14 @@
       "automerge": false
     },
     {
+      "description": "Node.js version pins in actions/setup-node (node-version) run semantic-release tooling in CI, never a shipped runtime artifact - label release:none so Release Label Check passes. Manual review for majors is kept (automerge false), only the label is added; overrides the unlabeled GitHub Actions major rule above.",
+      "matchManagers": ["github-actions"],
+      "matchDatasources": ["node-version"],
+      "matchDepNames": ["node"],
+      "automerge": false,
+      "labels": ["release:none"]
+    },
+    {
       "description": "Automerge pre-commit hooks minor and patch updates, labeled release:none - hook versions are local dev/CI tooling, never a shipped runtime artifact",
       "matchManagers": ["pre-commit"],
       "matchUpdateTypes": ["minor", "patch"],
