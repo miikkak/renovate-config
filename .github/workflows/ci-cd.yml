@@ -1,0 +1,26 @@
+---
+name: PR Validation
+
+on: # yamllint disable-line rule:truthy
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  ci-cd:
+    uses: miikkak/workflows/.github/workflows/ci-cd.yml@a2afdedf16798a9393f7a8e383e936ca1bafc2f0 # main
+    with:
+      # Public repo with no self-hosted runners registered: GitHub-hosted
+      # minutes are free here, so run on ubuntu-slim like secret-scan does.
+      runner: '["ubuntu-slim"]'
+      test-runner: '["ubuntu-slim"]'
+      code-paths: >-
+        '*.json', '.github/workflows/**', '.pre-commit-config.yaml',
+        'package*.json', '.releaserc.json'
