@@ -30,8 +30,9 @@ Extend with `"github>miikkak/renovate-config"`. Provides:
   except `dependency-groups.dev` deps (pytest, ruff, etc.), which always
   automerge labeled `release:none`, major included
 - Never bumps the `scop/pre-commit-shfmt` hook pin; it must equal the shfmt
-  bundled in the Super-Linter image and is synced by `super-linter.yml` in
-  `miikkak/workflows`
+  bundled in the Super-Linter image. `super-linter.yml` in `miikkak/workflows`
+  syncs it on Renovate PRs that move the workflow digest and fails the check on
+  drift everywhere else
 - `platformAutomerge` enabled
 
 ### Known gap: other test-only Gradle/Maven dependencies

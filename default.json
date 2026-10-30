@@ -57,7 +57,7 @@
       "labels": ["release:none"]
     },
     {
-      "description": "Never bump the scop/pre-commit-shfmt pin from the hook's own releases - it must equal the shfmt bundled in the Super-Linter image (miikkak/workflows super-linter.yml), which syncs it on the Renovate PR that moves the workflow digest",
+      "description": "Never bump the scop/pre-commit-shfmt pin from the hook's own releases - it must equal the shfmt bundled in the Super-Linter image (miikkak/workflows super-linter.yml). Renovate never updates it directly: super-linter.yml syncs it on Renovate PRs that move the workflow digest and fails the check on drift everywhere else",
       "matchManagers": ["pre-commit"],
       "matchPackageNames": ["scop/pre-commit-shfmt"],
       "enabled": false
