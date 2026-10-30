@@ -57,6 +57,12 @@
       "labels": ["release:none"]
     },
     {
+      "description": "Never bump the scop/pre-commit-shfmt pin from the hook's own releases - it must equal the shfmt bundled in the Super-Linter image (miikkak/workflows super-linter.yml), which syncs it on the Renovate PR that moves the workflow digest",
+      "matchManagers": ["pre-commit"],
+      "matchPackageNames": ["scop/pre-commit-shfmt"],
+      "enabled": false
+    },
+    {
       "description": "Automerge npm devDependency minor and patch updates, labeled release:none since these repos' package.json devDependencies are always semantic-release tooling, never a shipped runtime artifact",
       "matchManagers": ["npm"],
       "matchDepTypes": ["devDependencies"],
