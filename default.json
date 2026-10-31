@@ -246,5 +246,6 @@
       "automerge": false
     }
   ],
-  "platformAutomerge": true
+  "platformAutomerge": true,
+  "rebaseWhen": "conflicted"
 }

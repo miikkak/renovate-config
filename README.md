@@ -39,6 +39,35 @@ Extend with `"github>miikkak/renovate-config"`. Provides:
   the PR as modified and stop rebasing it. Do not add a human's email here:
   Renovate would then rebase over their manual edits.
 - `platformAutomerge` enabled
+- `rebaseWhen: conflicted`: Renovate rebases a PR only when it conflicts with
+  the base branch, not every time another PR merges. See below.
+
+### Rebasing and strict required status checks
+
+Renovate's default (`rebaseWhen: auto`) rebases every behind PR whenever
+automerge is configured, which this preset does for almost every rule. Where a
+merge does not require the branch to be up to date, that only multiplies CI and
+review runs: each merge makes every other open PR rebase and re-run.
+
+So this preset uses `conflicted`. The catch, from Renovate's own docs: with
+`conflicted`, a repo whose ruleset **requires branches to be up to date** (the
+`strict` setting in `miikkak/workflows` `governance/`) would leave behind PRs
+stuck, because nothing would rebase them and GitHub would refuse to merge them.
+
+Such a repo must override it in its own `renovate.json`:
+
+```json
+{
+  "extends": ["github>miikkak/renovate-config"],
+  "rebaseWhen": "behind-base-branch"
+}
+```
+
+Keep that override exactly as long as the repo is listed with `strict: true` in
+`governance/repos.yaml`, and remove it in the same change that relaxes strict.
+Renovate's documentation only describes detecting this from branch protection
+and does not mention rulesets, which is what these repos use, so do not rely on
+`auto` to work it out.
 
 ### Known gap: other test-only Gradle/Maven dependencies
 
