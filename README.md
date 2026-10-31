@@ -33,6 +33,11 @@ Extend with `"github>miikkak/renovate-config"`. Provides:
   bundled in the Super-Linter image. `super-linter.yml` in `miikkak/workflows`
   syncs it on Renovate PRs that move the workflow digest and fails the check on
   drift everywhere else
+- Ignores commits by `github-actions[bot]` when deciding whether a Renovate PR
+  was edited (`gitIgnoredAuthors`). The shfmt pin sync in `super-linter.yml`
+  pushes a commit to Renovate's digest PRs; without this, Renovate would treat
+  the PR as modified and stop rebasing it. Do not add a human's email here:
+  Renovate would then rebase over their manual edits.
 - `platformAutomerge` enabled
 
 ### Known gap: other test-only Gradle/Maven dependencies
